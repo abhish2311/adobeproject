@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  pdf-extractor:
+    build: .
+    volumes:
+      - ./input:/app/input:ro  # Mount local input directory as read-only
+      - ./output:/app/output   # Mount local output directory for writing
+    environment:
+      - PYTHONUNBUFFERED=1    # Ensure Python output is not buffered
+    restart: "no"             # Don't restart on completion
